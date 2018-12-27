@@ -1,3 +1,3 @@
-# moraleAK.github.io
+# Gin blog
 
-hello if you see this, congragulations! success!
+##  [百度][baidu.com]
