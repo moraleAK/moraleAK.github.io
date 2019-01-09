@@ -1,39 +1,49 @@
+--- 
+layout: default 
+alt: This is a single post, but you can find more in the <a href="/archives/">archives</a>. 
 ---
-layout: default
----
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div id="post">
+    <!-- <div class="post-title">{{ page.title }}<a id="permalink" href="{{ page.url }}">#</a></div> -->
 
-    <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time> {% if page.author %}<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">/ {{ page.author }}</span></span>{% endif %}{% if page.tags != null %}/
-            {% assign projectTags = site.data.tags.allowed-tags %}
-            {% for tag in page.tags %}
-            {% if projectTags contains tag %}
-            <a href="{{ "tag_" | append: tag | append: ".html"}}">{{tag}}</a>{% unless forloop.last %}, {% endunless%}
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+    <div class="post-meta">
+        <time datetime="{{ page.date | date: " %Y-%m-%d " }}">
+            {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        <!-- {% if page.location %} &mdash; {{ page.location }} {% endif %} -->
+    </div>
 
-        </p>
-
-
-    </header>
-
-    <div class="post-content" itemprop="articleBody">
-
-        {% if page.summary %}
-        <div class="summary">{{page.summary}}</div>
-        {% endif %}
-
+    <div class="content, clearfix">
         {{ content }}
     </div>
 
+    <div id="sharebuttom" class="clearfix">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+            <a class="addthis_counter addthis_pill_style"></a>
+        </div>
 
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=icco"></script>
+        <!-- AddThis Button END -->
+    </div>
+</div>
 
-</article>
+<div id="related">
+    <h2>Related Posts</h2>
+    <ul class="posts">
+        {% for post in site.related_posts limit:3 %}
+        <li class="{% cycle 'one', 'two' %}" style="list-style:none;"><span class="date">{{ post.date | date: "%b %d, %Y" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 
-{% include disqus.html %}
-
-{{site.data.alerts.hr_shaded}}
-
-{% include footer.html %}
+<div id="navigation">
+    {% if page.next %}
+    <div id="post-next">
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}">Next</a> &raquo;
+    </div>
+    {% endif %} {% if page.previous %}
+    <div id="post-prev">
+        &laquo; <a href="{{ page.previous.url }}" title="{{ page.previous.title }}">Previous</a>
+    </div>
+    {% endif %}
+</div>
