@@ -11,5 +11,5 @@ $(document).ready(function() {
         randomBookId -= 5;
     }
 
-    $("#" + bookIdPrefix + randomBookId).show();
+    // $("#" + bookIdPrefix + randomBookId).show();
 });
