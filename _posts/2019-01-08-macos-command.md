@@ -10,7 +10,10 @@ categories: macOS, command
 {% highlight java linenos %}
 
 # 显示隐藏文件  
-shfit + command + .  
+shift + command + .  
 # 复制文件路径  
 option + command + c
+# 全屏
+cmd + opt + f
+
 {% endhighlight %}
