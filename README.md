@@ -1,1 +1,1 @@
-# uxgnoz.github.com
+# https://ginight.com
